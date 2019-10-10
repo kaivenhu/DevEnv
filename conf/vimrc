@@ -1,0 +1,101 @@
+" Total shortcut:
+" F5: show/off Nerdtree
+" Space: clean highlight.
+" F8: show/off tagbar
+
+set nocompatible
+filetype off
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+" alternatively, pass a path where Vundle should install plugins
+" let path = '~/some/path/here'
+" call vundle#rc(path)
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/vundle'
+
+Plugin 'octol/vim-cpp-enhanced-highlight'
+
+Plugin 'Lokaltog/vim-powerline'
+
+Plugin 'https://github.com/scrooloose/nerdtree.git'
+Plugin 'https://github.com/Xuyuanp/nerdtree-git-plugin.git'
+
+Plugin 'Valloric/YouCompleteMe'
+
+Bundle 'majutsushi/tagbar'
+
+
+filetype plugin indent on
+
+" Default Setting.
+syntax enable
+
+set number
+set shiftwidth=4
+set expandtab
+set tabstop=4
+set t_Co=256
+set ai
+set ruler
+set history=100
+set cursorline
+
+colorscheme molokai
+
+" * Highlight *
+highlight ExtraWhitespace ctermbg=darkgrey guibg=darkgrey
+match ExtraWhitespace /\s\+$/
+set hlsearch
+" Press Space to turn off highlighting and clear any message already displayed.
+nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+
+" * Powerline *
+set rtp+=/usr/share/powerline/bindings/vim/
+" Always show statusline
+set laststatus=2
+set guifont=PowerlineSymbols\ for\ Powerline
+let g:Powerline_symbols= 'fancy'
+set encoding=utf8
+" *************
+
+
+" * NerdTree *
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+nnoremap <silent> <F5> :NERDTreeToggle<CR>
+"let NERDTreeMapOpenInTab='<ENTER>'
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" * Tagbar *
+nmap <F8> :TagbarToggle<CR>
+
+
+" * YouCompleteMe *
+let g:ycm_global_ycm_extra_conf='/root/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
+let g:ycm_show_diagnostics_ui = 0
+
+
+
+" cscope
+set cscopetag                  " 使用 cscope 作为 tags 命令
+set cscopeprg='gtags-cscope'   " 使用 gtags-cscope 代替 cscope
+noremap <leader>cs :cs find s
+noremap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+noremap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+noremap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+noremap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+noremap <C-\>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+noremap <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+noremap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+noremap <C-\>i :cs find i <C-R>=expand("<cfile>")<CR><CR>
+
+
+
+" gtags
+let GtagsCscope_Auto_Load = 1
+let CtagsCscope_Auto_Map = 1
+let GtagsCscope_Quiet = 1
+
