@@ -1,0 +1,7 @@
+alias tmux="TERM=screen-256color-bce tmux"
+
+function parse_git_branch {
+    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+
+PS1="[\[\033[1;37m\]\w\[\033[0m\]] \[\033[0m\]\[\033[1;36m\]\$(parse_git_branch)\[\033[0;33m\]\$\[\033[0m\] "

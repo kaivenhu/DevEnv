@@ -100,3 +100,6 @@ log "-----------------------------"
 
 log "For gtags, download gtags-cscope.vim and gtags.vim. Then put then into /root/.vim/plugin "
 log "-----------------------------"
+
+log "Add bashrc config."
+log "-----------------------------"

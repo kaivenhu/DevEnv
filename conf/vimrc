@@ -27,12 +27,15 @@ Plugin 'Valloric/YouCompleteMe'
 
 Bundle 'majutsushi/tagbar'
 
+Plugin 'Raimondi/delimitMate'
 
 filetype plugin indent on
 
 " Default Setting.
 syntax enable
 
+set autoindent
+set smartindent
 set number
 set shiftwidth=4
 set expandtab
@@ -98,4 +101,8 @@ noremap <C-\>i :cs find i <C-R>=expand("<cfile>")<CR><CR>
 let GtagsCscope_Auto_Load = 1
 let CtagsCscope_Auto_Map = 1
 let GtagsCscope_Quiet = 1
+
+" * delimitMate *
+let g:delimitMate_expand_cr = 1
+
 
